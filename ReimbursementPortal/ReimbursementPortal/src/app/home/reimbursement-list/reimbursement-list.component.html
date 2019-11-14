@@ -1,0 +1,13 @@
+<table class="highlight">
+  <tr *ngFor="let rem of this.list1">
+    <td (click)="populateForm(rem)">[{{rem.Date}}]-{{rem.ReimbursementType}}</td>
+    <td (click)="populateForm(rem)">{{rem.RequestedValue}}</td>
+    <td (click)="populateForm(rem)">{{rem.ApprovedValue}}</td>
+    <td (click)="populateForm(rem)">{{rem.Currency}}</td>
+    <td (click)="populateForm(rem)">{{rem.RequestedPhase}}</td>
+    <td (click)="populateForm(rem)">{{rem.ReceiptAttached}}</td>
+    <td>
+        <a (click)="onDelete(rem.Id)" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">delete</i></a>
+    </td>
+  </tr>
+</table>

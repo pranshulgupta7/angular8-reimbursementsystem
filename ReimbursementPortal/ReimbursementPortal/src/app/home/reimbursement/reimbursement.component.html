@@ -1,0 +1,67 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+
+<form class="col s12 white" #form="ngForm" (submit)="onSubmit(form) ; OnSubmit(Caption,Image)" autocomplete="off">
+    <input type="hidden" name="Id" #Id="ngModel" [(ngModel)]="service.formData.Id">
+    <div class="row">
+      <div class="input-field col s6">
+        <input type="date" name="Date" #Date="ngModel" [(ngModel)]="service.formData.Date" required>
+        <label>Date</label>
+        <div class="validation-error" *ngIf="Date.invalid && Date.touched">This field is required!</div>
+      </div>
+      <div class="input-field col s6">
+        <input type="text" name="ReimbursementType" #ReimbursementType="ngModel" [(ngModel)]="service.formData.ReimbursementType" required>
+        <label>Reimbursement Type</label>
+        <div class="validation-error" *ngIf="ReimbursementType.invalid && ReimbursementType.touched">This field is required!</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s6">
+        <input type="number" name="RequestedValue" #RequestedValue="ngModel" [(ngModel)]="service.formData.RequestedValue" required>
+        <label>Requested Value</label>
+        <div class="validation-error" *ngIf="RequestedValue.invalid && RequestedValue.touched">This field is required!</div>
+      </div>
+      <!-- <div class="input-field col s6">
+        <input type="number" name="ApprovedValue" #ApprovedValue="ngModel" [(ngModel)]="service.formData.ApprovedValue">
+        <label>Approved Value</label>
+      </div> -->
+    </div>
+    <div class="row">
+      <div class="input-field col s6">
+        <input type="text" name="Currency" #Currency="ngModel" [(ngModel)]="service.formData.Currency" required>
+        <label>Currency</label>
+        <div class="validation-error" *ngIf="Currency.invalid && Currency.touched">This field is required!</div>
+      </div>
+      <!-- <div class="input-field col s6">
+        <input type="text" name="RequestedPhase" #RequestedPhase="ngModel" [(ngModel)]="service.formData.RequestedPhase">
+        <label>Requested Phase</label>
+      </div> -->
+      <!-- <div class="input-field col s6">
+        <input type="text" name="ReceiptAttached" #ReceiptAttached="ngModel" [(ngModel)]="service.formData.ReceiptAttached" required>
+        <label>Receipt Attached</label>
+        <div class="validation-error" *ngIf="ReceiptAttached.invalid && ReceiptAttached.touched">This field is required!</div>
+      </div> -->
+    </div>
+
+    <div class="row">
+      <div class="input-field col s6">
+        <input type="text" #Caption ngModel name="Caption" id="Caption" required>
+        <label for="Caption">Caption</label>
+      </div>
+    </div>
+    <img [src]="imageURL"  style="width:250px;height:200px">
+    <hr>
+    <input type="file" #Image accept="image/*" (change)="handleFileInput($event.target.files)">
+    <hr>
+
+    <div class="row">
+      <div class="input-field col s12">
+        <button [disabled]="!form.valid" class="btn-large btn-submit" type="submit">Submit</button>
+      </div>
+    </div>
+  </form>
+  <app-upload-image></app-upload-image>
